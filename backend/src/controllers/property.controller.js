@@ -34,6 +34,13 @@ exports.getProperties = async (req, res) => {
 
 exports.addProperty = async (req, res) => {
   try {
+    console.log("addProperty called");
+    console.log("req.user:", req.user);
+    console.log("req.body:", req.body);
+    console.log("req.files:", req.files);
+    console.log("CLOUDINARY_CLOUD_NAME:", process.env.CLOUDINARY_CLOUD_NAME ? 'set' : 'NOT SET');
+    console.log("DATABASE_URL:", process.env.DATABASE_URL ? 'set' : 'NOT SET');
+    
     const {
       title,
       description,

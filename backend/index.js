@@ -58,8 +58,11 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   console.error("🔥 Server error:", err.message);
+  console.error("🔥 Error stack:", err.stack);
+  console.error("🔥 Error name:", err.name);
   res.status(500).json({
     message: err.message || "Internal server error",
+    error: process.env.NODE_ENV === 'development' ? err.stack : undefined,
   });
 });
 
