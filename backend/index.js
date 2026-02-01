@@ -8,7 +8,13 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://localhost:5175",
   "http://localhost:5176",
+  "https://property-management-frontend.vercel.app",
+  "https://property-management-frontend-git-main.vercel.app",
+  "https://property-management-frontend-*.vercel.app",
   "https://property-management-backend-six.vercel.app", 
+  "https://property-management-backend-673l.onrender.com",
+  "http://localhost:3000",
+  "http://localhost:8080",
 ];
 
 app.use(
@@ -18,6 +24,11 @@ app.use(
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Allow any vercel.app subdomain for frontend
+      if (origin.includes('vercel.app')) {
         return callback(null, true);
       }
 
