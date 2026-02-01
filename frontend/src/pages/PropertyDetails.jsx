@@ -16,18 +16,23 @@ const PropertyDetails = () => {
   const fetchProperty = async () => {
     try {
       const data = await propertyService.getPropertyById(id);
-      setProperty(data);
+      if (data) {
+        setProperty(data);
+      } else {
+        // Property not found
+        setProperty(null);
+      }
     } catch (error) {
       console.error('Error fetching property:', error);
-      // Set demo data
-      setProperty(getDemoProperty(id));
+      // Don't use demo data for actual API errors - show not found instead
+      setProperty(null);
     } finally {
       setLoading(false);
     }
   };
 
   const getDemoProperty = (id) => ({
-    _id: id,
+    id: id,
     title: 'Modern Downtown Apartment',
     price: 450000,
     location: '123 Main Street, Manhattan, New York, NY 10001',
