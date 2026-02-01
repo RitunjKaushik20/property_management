@@ -3,15 +3,29 @@ const cors = require("cors");
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://property-management-backend-six.vercel.app",
+  "https://property-management-backend-m5hq2tag0-ritunj-kaushiks-projects.vercel.app"
+];
+
 app.use(cors({
-  origin: [
-      "http://localhost:5173",
-      "https://property-management-backend-six.vercel.app"
-    ],
+  origin: function (origin, callback) {
+
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS blocked: " + origin));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
+  credentials: true
 }));
+
+app.options("*", cors());
 
 app.use(express.json());
 
@@ -23,14 +37,15 @@ app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
+
 app.use((err, req, res, next) => {
   console.error("Error:", err);
-  res.status(err.status || 500).json({
-    message: err.message || "Internal server error",
-    ...(process.env.NODE_ENV === "development" && { stack: err.stack })
+  res.status(500).json({
+    message: err.message || "Internal server error"
   });
 });
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 module.exports = app;
