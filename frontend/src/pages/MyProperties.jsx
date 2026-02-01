@@ -88,6 +88,10 @@ const MyProperties = () => {
     navigate(`/edit-property/${id}`);
   };
 
+  const handleView = (id) => {
+    navigate(`/properties/${id}`);
+  };
+
   // 🇮🇳 INR formatting
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-IN', {
@@ -205,12 +209,12 @@ const MyProperties = () => {
 
                       {/* Actions */}
                       <div className="flex gap-3">
-                        <Link
-                          to={`/properties/${property.id}`}
+                        <button
+                          onClick={() => handleView(property.id)}
                           className="flex-1 text-center bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700"
                         >
                           View
-                        </Link>
+                        </button>
                         <button
                           onClick={() => handleEdit(property.id)}
                           className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
