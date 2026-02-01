@@ -39,7 +39,11 @@ const propertyService = {
 
   updateProperty: async (id, propertyData) => {
     try {
-      const response = await api.put(`/properties/${id}`, propertyData);
+      const response = await api.put(`/properties/${id}`, propertyData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return response.data;
     } catch (error) {
       throw error.response?.data || { message: 'Failed to update property' };
