@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import propertyService from '../services/propertyService';
+import { useAuth } from '../context/AuthContext';
 
 const PropertyDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -30,21 +33,35 @@ const PropertyDetails = () => {
     } catch (error) {
       console.error('Error fetching property:', error);
       console.error('Error response:', error.response?.data);
-      
+
       // Check if it's a 404 or other error
       if (error.response?.status === 404) {
         setProperty(null);
         setError('Property not found');
       } else if (error.response?.status === 401) {
-        // Unauthorized - might need to show login
-        setProperty(null);
-        setError('Please login to view this property');
+        // Unauthorized - redirect to login
+        navigate('/login');
       } else {
         // Show demo data for demo purposes when API fails
         setProperty(getDemoProperty(id));
       }
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Check if current user owns the property
+  const isOwner = user && property && property.ownerId === user.id;
+
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to delete this property?')) {
+      try {
+        await propertyService.deleteProperty(property.id);
+        navigate('/my-properties');
+      } catch (error) {
+        console.error('Error deleting property:', error);
+        alert('Failed to delete property. Please try again.');
+      }
     }
   };
 
@@ -127,12 +144,15 @@ const PropertyDetails = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Back Button */}
       <div className="container mx-auto px-4 py-4">
-        <Link to="/my-properties" className="inline-flex items-center text-primary-600 hover:text-primary-700">
+        <button
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center text-primary-600 hover:text-primary-700"
+        >
           <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          Back to My Properties
-        </Link>
+          Go Back
+        </button>
       </div>
 
       {/* Image Gallery */}
@@ -287,19 +307,30 @@ const PropertyDetails = () => {
               <h3 className="text-xl font-bold text-dark-900 mb-4">Property Actions</h3>
               
               <div className="space-y-4">
-                <Link
-                  to={`/edit-property/${property.id}`}
-                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                >
-                  Edit Property
-                </Link>
-                
-                <button
-                  className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
-                  onClick={() => alert('Delete functionality would go here')}
-                >
-                  Delete Property
-                </button>
+                {isOwner ? (
+                  <>
+                    <Link
+                      to={`/edit-property/${property.id}`}
+                      className="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                    >
+                      Edit Property
+                    </Link>
+
+                    <button
+                      className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
+                      onClick={handleDelete}
+                    >
+                      Delete Property
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    className="w-full bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                    onClick={() => alert('Contact functionality would go here')}
+                  >
+                    Contact Owner
+                  </button>
+                )}
               </div>
 
               {/* Owner Info */}

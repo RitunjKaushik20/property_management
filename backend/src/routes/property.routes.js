@@ -6,7 +6,7 @@ const upload = require("../middlewares/upload.middleware");
 router.post("/", auth, upload.array("images"), controller.addProperty);
 router.get("/", controller.getProperties);
 router.get("/my-properties", auth, controller.getMyProperties);
-router.get("/:id", controller.getPropertyById);
+router.get("/:id", auth, controller.getPropertyById);
 router.put("/:id", auth, upload.array("images"), controller.updateProperty);
 router.delete("/:id", auth, controller.deleteProperty);
 

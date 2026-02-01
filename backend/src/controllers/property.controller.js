@@ -241,6 +241,12 @@ exports.getPropertyById = async (req, res) => {
       return res.status(404).json({ message: "Property not found" });
     }
 
+    // Increment views count
+    await prisma.property.update({
+      where: { id: req.params.id },
+      data: { views: (property.views || 0) + 1 }
+    });
+
     res.json(property);
   } catch (error) {
     console.error("GetPropertyById error:", error);
