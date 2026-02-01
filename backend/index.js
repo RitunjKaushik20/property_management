@@ -43,6 +43,13 @@ app.use(
 
 app.use(express.json());
 
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`📝 ${req.method} ${req.url}`);
+  console.log("Headers:", JSON.stringify(req.headers, null, 2));
+  next();
+});
+
 app.use("/api/auth", require("./src/routes/auth.routes"));
 app.use("/api/properties", require("./src/routes/property.routes"));
 app.use("/api/leads", require("./src/routes/lead.routes"));
