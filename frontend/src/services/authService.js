@@ -1,13 +1,7 @@
 import api from "../api/axios";
 
-/**
- * Auth Service
- * All auth related API calls live here
- */
 const authService = {
-  // =====================
-  // REGISTER
-  // =====================
+
   register: async (userData) => {
     const { name, email, password } = userData;
 
@@ -29,10 +23,6 @@ const authService = {
       };
     }
   },
-
-  // =====================
-  // LOGIN
-  // =====================
   login: async (credentials) => {
     const { email, password } = credentials;
 
@@ -54,9 +44,7 @@ const authService = {
     }
   },
 
-  // =====================
-  // GET PROFILE
-  // =====================
+
   getProfile: async () => {
     try {
       const response = await api.get("/auth/me");
@@ -68,9 +56,6 @@ const authService = {
     }
   },
 
-  // =====================
-  // UPDATE PROFILE
-  // =====================
   updateProfile: async (userData) => {
     const { username, email } = userData;
 
@@ -92,9 +77,6 @@ const authService = {
     }
   },
 
-  // =====================
-  // CHANGE PASSWORD
-  // =====================
   changePassword: async (passwordData) => {
     const { currentPassword, newPassword } = passwordData;
 

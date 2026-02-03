@@ -46,7 +46,7 @@ const Login = () => {
         transition={{ duration: 0.5 }}
         className="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl"
       >
-        {/* Header */}
+        
         <div className="text-center">
           <Link to="/" className="flex items-center justify-center space-x-2 mb-6">
             <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
@@ -58,7 +58,7 @@ const Login = () => {
           <p className="mt-2 text-dark-600">Sign in to your account</p>
         </div>
 
-        {/* Error Message */}
+      
         {error && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -69,7 +69,7 @@ const Login = () => {
           </motion.div>
         )}
 
-        {/* Form */}
+
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>

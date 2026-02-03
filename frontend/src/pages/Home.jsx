@@ -14,12 +14,12 @@ const Home = () => {
 
   const fetchFeaturedProperties = async () => {
     try {
-      // Fetch first 6 properties as featured
+      
       const data = await propertyService.getProperties({ limit: 6 });
       setFeaturedProperties(data.properties || []);
     } catch (error) {
       console.error('Error fetching properties:', error);
-      // Set demo data for now
+   
       setFeaturedProperties(getDemoProperties());
     } finally {
       setLoading(false);
@@ -30,7 +30,7 @@ const Home = () => {
     {
       _id: '1',
       title: 'Modern Apartment in South Delhi',
-      price: 8500000, // ₹85 Lakhs
+      price: 8500000, 
       location: 'South Delhi, Delhi',
       images: ['https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800'],
       bedrooms: 3,
@@ -41,7 +41,7 @@ const Home = () => {
     {
       _id: '2',
       title: 'Luxury Villa in Mumbai Suburbs',
-      price: 35000000, // ₹3.5 Cr
+      price: 35000000, 
       location: 'Bandra West, Mumbai',
       images: ['https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800'],
       bedrooms: 5,
@@ -52,7 +52,7 @@ const Home = () => {
     {
       _id: '3',
       title: 'Cozy 2BHK in Bangalore',
-      price: 6500000, // ₹65 Lakhs
+      price: 6500000, 
       location: 'Whitefield, Bangalore',
       images: ['https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800'],
       bedrooms: 2,
@@ -63,7 +63,7 @@ const Home = () => {
     {
       _id: '4',
       title: 'Penthouse with City View in Pune',
-      price: 12000000, // ₹1.2 Cr
+      price: 12000000, 
       location: 'Koregaon Park, Pune',
       images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800'],
       bedrooms: 3,
@@ -74,7 +74,7 @@ const Home = () => {
     {
       _id: '5',
       title: 'Elegant Villa in Jaipur',
-      price: 9500000, // ₹95 Lakhs
+      price: 9500000, 
       location: 'C-Scheme, Jaipur',
       images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800'],
       bedrooms: 4,
@@ -85,7 +85,7 @@ const Home = () => {
     {
       _id: '6',
       title: 'Contemporary 2BHK in Hyderabad',
-      price: 7200000, // ₹72 Lakhs
+      price: 7200000, 
       location: 'Gachibowli, Hyderabad',
       images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'],
       bedrooms: 2,
@@ -127,18 +127,18 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+     
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background with gradient */}
+      
         <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-primary-900 to-primary-700">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920')] bg-cover bg-center opacity-10"></div>
         </div>
 
-        {/* Animated circles */}
+    
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-700"></div>
 
-        {/* Content */}
+        
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -172,7 +172,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+     
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -196,7 +196,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Properties Section */}
+   
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -235,7 +235,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+ 
       <section className="py-20 bg-gradient-to-br from-primary-700 to-primary-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div

@@ -18,7 +18,7 @@ const Register = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  // Update form state
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -27,14 +27,14 @@ const Register = () => {
     setError('');
   };
 
-  // Handle form submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     const { name, email, password, confirmPassword } = formData;
 
-    // Frontend validation
+  
     if (!name || !email || !password) {
       setError('Name, email, and password are required');
       return;
@@ -53,18 +53,18 @@ const Register = () => {
     setLoading(true);
 
     try {
-      // Send only required fields to backend
+     
       const registrationData = { name, email, password };
       const response = await authService.register(registrationData);
 
-      // Save user session (token + user)
+     
       login(response.user, response.token);
 
-      // Navigate to dashboard
+  
       navigate('/dashboard');
     } catch (err) {
       console.error('Registration error:', err);
-      // Show backend or frontend error message
+    
       setError(err.message || err.error || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
@@ -79,7 +79,7 @@ const Register = () => {
         transition={{ duration: 0.5 }}
         className="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl"
       >
-        {/* Header */}
+      
         <div className="text-center">
           <Link to="/" className="flex items-center justify-center space-x-2 mb-6">
             <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
@@ -91,7 +91,7 @@ const Register = () => {
           <p className="mt-2 text-dark-600">Join us to find your dream property</p>
         </div>
 
-        {/* Error Message */}
+       
         {error && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -102,10 +102,10 @@ const Register = () => {
           </motion.div>
         )}
 
-        {/* Registration Form */}
+ 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
-            {/* Name */}
+           
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-dark-700 mb-1">
                 Full Name
@@ -122,7 +122,6 @@ const Register = () => {
               />
             </div>
 
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-dark-700 mb-1">
                 Email Address
@@ -139,7 +138,6 @@ const Register = () => {
               />
             </div>
 
-            {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-dark-700 mb-1">
                 Password
@@ -156,7 +154,7 @@ const Register = () => {
               />
             </div>
 
-            {/* Confirm Password */}
+       
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-dark-700 mb-1">
                 Confirm Password
@@ -174,7 +172,7 @@ const Register = () => {
             </div>
           </div>
 
-          {/* Terms */}
+        
           <div className="flex items-center">
             <input
               id="terms"
@@ -191,7 +189,7 @@ const Register = () => {
             </label>
           </div>
 
-          {/* Submit Button */}
+        
           <button
             type="submit"
             disabled={loading}

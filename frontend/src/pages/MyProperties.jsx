@@ -15,11 +15,11 @@ const MyProperties = () => {
   const fetchMyProperties = async () => {
     try {
       const data = await propertyService.getMyProperties();
-      // Backend returns array with 'id' field (Prisma default)
+
       setProperties(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error('Error fetching properties:', error);
-      // Demo data for India - using 'id' instead of '_id'
+      
       setProperties(getDemoProperties());
     } finally {
       setLoading(false);
@@ -92,7 +92,7 @@ const MyProperties = () => {
     navigate(`/properties/${id}`);
   };
 
-  // 🇮🇳 INR formatting
+
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -151,7 +151,7 @@ const MyProperties = () => {
                   className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
                 >
                   <div className="md:flex">
-                    {/* Image */}
+                   
                     <div className="md:w-1/3">
                       <img
                         src={property.images?.[0]}
@@ -160,7 +160,7 @@ const MyProperties = () => {
                       />
                     </div>
 
-                    {/* Content */}
+                    
                     <div className="md:w-2/3 p-6">
                       <div className="flex items-center gap-2 mb-2">
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -187,7 +187,7 @@ const MyProperties = () => {
                         {formatPrice(property.price)}
                       </p>
 
-                      {/* Stats */}
+                     
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 border-t pt-4">
                         <div>
                           <p className="text-sm text-dark-600">Bedrooms</p>
@@ -207,7 +207,7 @@ const MyProperties = () => {
                         </div>
                       </div>
 
-                      {/* Actions */}
+                      
                       <div className="flex gap-3">
                         <button
                           onClick={() => handleView(property.id)}

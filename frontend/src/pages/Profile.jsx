@@ -127,7 +127,7 @@ const Profile = () => {
           )}
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Sidebar */}
+            
             <div className="lg:col-span-1">
               <div className="bg-white rounded-xl shadow-md p-6 text-center">
                 <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-primary-600 to-primary-800 rounded-full flex items-center justify-center text-white text-5xl font-bold">
@@ -160,9 +160,9 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* Main Content */}
+           
             <div className="lg:col-span-2 space-y-6">
-              {/* Profile Info */}
+             
               <div className="bg-white rounded-xl shadow-md p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-2xl font-bold text-dark-900">
@@ -263,7 +263,7 @@ const Profile = () => {
                 </form>
               </div>
 
-              {/* Change Password */}
+             
               <div className="bg-white rounded-xl shadow-md p-6">
                 <h3 className="text-2xl font-bold text-dark-900 mb-6">
                   Change Password

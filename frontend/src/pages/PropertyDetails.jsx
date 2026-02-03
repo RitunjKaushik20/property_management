@@ -26,7 +26,7 @@ const PropertyDetails = () => {
         setProperty(data);
         setError(null);
       } else {
-        // Property not found
+     
         setProperty(null);
         setError('Property not found');
       }
@@ -34,15 +34,15 @@ const PropertyDetails = () => {
       console.error('Error fetching property:', error);
       console.error('Error response:', error.response?.data);
 
-      // Check if it's a 404 or other error
+     
       if (error.response?.status === 404) {
         setProperty(null);
         setError('Property not found');
       } else if (error.response?.status === 401) {
-        // Unauthorized - redirect to login
+      
         navigate('/login');
       } else {
-        // Show demo data for demo purposes when API fails
+      
         setProperty(getDemoProperty(id));
       }
     } finally {
@@ -50,7 +50,7 @@ const PropertyDetails = () => {
     }
   };
 
-  // Check if current user owns the property
+
   const isOwner = user && property && property.ownerId === user.id;
 
   const handleDelete = async () => {
@@ -142,7 +142,7 @@ const PropertyDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
-      {/* Back Button */}
+      
       <div className="container mx-auto px-4 py-4">
         <button
           onClick={() => navigate(-1)}
@@ -155,7 +155,7 @@ const PropertyDetails = () => {
         </button>
       </div>
 
-      {/* Image Gallery */}
+    
       <section className="bg-white">
         <div className="container mx-auto px-4 py-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -170,7 +170,7 @@ const PropertyDetails = () => {
                 className="w-full h-full object-cover"
               />
               
-              {/* Image Navigation */}
+             
               {property.images && property.images.length > 1 && (
                 <>
                   <button
@@ -193,7 +193,7 @@ const PropertyDetails = () => {
               )}
             </motion.div>
 
-            {/* Thumbnails */}
+           
             {property.images && property.images.length > 1 && (
               <div className="grid grid-cols-3 gap-4">
                 {property.images.slice(0, 6).map((image, index) => (
@@ -213,12 +213,12 @@ const PropertyDetails = () => {
         </div>
       </section>
 
-      {/* Main Content */}
+     
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Property Details */}
+     
           <div className="lg:col-span-2 space-y-6">
-            {/* Header */}
+         
             <div className="bg-white rounded-xl p-6 shadow-md">
               <div className="flex items-start justify-between mb-4">
                 <div>
@@ -239,7 +239,7 @@ const PropertyDetails = () => {
                 </div>
               </div>
 
-              {/* Quick Stats */}
+            
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-dark-200">
                 <div className="text-center">
                   <p className="text-2xl font-bold text-dark-900">{property.bedrooms || '-'}</p>
@@ -260,13 +260,13 @@ const PropertyDetails = () => {
               </div>
             </div>
 
-            {/* Description */}
+         
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-2xl font-bold text-dark-900 mb-4">Description</h2>
               <p className="text-dark-700 leading-relaxed">{property.description || 'No description available.'}</p>
             </div>
 
-            {/* Features */}
+    
             {property.features && property.features.length > 0 && (
               <div className="bg-white rounded-xl p-6 shadow-md">
                 <h2 className="text-2xl font-bold text-dark-900 mb-4">Features & Amenities</h2>
@@ -283,7 +283,7 @@ const PropertyDetails = () => {
               </div>
             )}
 
-            {/* Additional Details */}
+           
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-2xl font-bold text-dark-900 mb-4">Additional Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -301,7 +301,7 @@ const PropertyDetails = () => {
             </div>
           </div>
 
-          {/* Right Column - Actions */}
+       
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl p-6 shadow-md sticky top-24">
               <h3 className="text-xl font-bold text-dark-900 mb-4">Property Actions</h3>
@@ -333,7 +333,7 @@ const PropertyDetails = () => {
                 )}
               </div>
 
-              {/* Owner Info */}
+           
               {property.owner && (
                 <div className="mt-6 pt-6 border-t border-dark-200">
                   <h4 className="font-semibold text-dark-900 mb-2">Listed By</h4>

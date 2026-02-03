@@ -37,7 +37,7 @@ const EditProperty = () => {
     try {
       const data = await propertyService.getPropertyById(id);
       
-      // Set form data
+   
       setFormData({
         title: data.title || '',
         description: data.description || '',
@@ -52,7 +52,7 @@ const EditProperty = () => {
         features: data.features ? data.features.join(', ') : '',
       });
 
-      // Set existing images
+  
       if (data.images && Array.isArray(data.images)) {
         setExistingImages(data.images);
         setImagePreviews(data.images);
@@ -92,13 +92,13 @@ const EditProperty = () => {
 
     setSelectedImages(prev => [...prev, ...files]);
     
-    // Create previews for new images
+    
     const newPreviews = files.map(file => URL.createObjectURL(file));
     setImagePreviews(prev => [...prev, ...newPreviews]);
   };
 
   const removeImage = (index) => {
-    // If it's an existing image, mark it for deletion
+   
     if (index < existingImages.length) {
       const imageToDelete = existingImages[index];
       setImagesToDelete(prev => [...prev, imageToDelete]);
@@ -106,11 +106,11 @@ const EditProperty = () => {
       setExistingImages(newExistingImages);
     }
     
-    // Remove from previews
+    
     const newPreviews = imagePreviews.filter((_, i) => i !== index);
     setImagePreviews(newPreviews);
     
-    // Remove from selected new images
+    
     if (index >= existingImages.length) {
       const newSelectedImages = selectedImages.filter((_, i) => i !== (index - existingImages.length));
       setSelectedImages(newSelectedImages);
@@ -144,17 +144,17 @@ const EditProperty = () => {
         propertyFormData.append('features', formData.features);
       }
 
-      // Send remaining existing images
+     
       if (existingImages.length > 0) {
         propertyFormData.append('existingImages', JSON.stringify(existingImages));
       }
 
-      // Send images to delete
+ 
       if (imagesToDelete.length > 0) {
         propertyFormData.append('imagesToDelete', JSON.stringify(imagesToDelete));
       }
 
-      // Add new images
+     
       selectedImages.forEach((image) => {
         propertyFormData.append('images', image);
       });
@@ -225,7 +225,7 @@ const EditProperty = () => {
             onSubmit={handleSubmit}
             className="bg-white rounded-xl shadow-md p-8"
           >
-            {/* Basic Information */}
+         
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-dark-900 mb-4">
                 Basic Information
@@ -311,7 +311,7 @@ const EditProperty = () => {
               </div>
             </div>
 
-            {/* Property Details */}
+          
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-dark-900 mb-4">
                 Property Details
@@ -395,7 +395,7 @@ const EditProperty = () => {
               </div>
             </div>
 
-            {/* Amenities */}
+           
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-dark-900 mb-4">
                 Amenities
@@ -414,7 +414,7 @@ const EditProperty = () => {
               </p>
             </div>
 
-            {/* Property Images */}
+      
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-dark-900 mb-4">
                 Property Images
@@ -441,7 +441,7 @@ const EditProperty = () => {
                 </label>
               </div>
 
-              {/* Image Previews */}
+            
               {imagePreviews.length > 0 && (
                 <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
                   {imagePreviews.map((preview, index) => (
@@ -464,7 +464,7 @@ const EditProperty = () => {
               )}
             </div>
 
-            {/* Form Actions */}
+        
             <div className="flex gap-4">
               <button
                 type="submit"

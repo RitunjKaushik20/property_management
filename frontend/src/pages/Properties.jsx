@@ -31,7 +31,7 @@ const Properties = () => {
     }
   };
 
-  // 🇮🇳 Indian demo properties
+
   const getDemoProperties = () => [
     {
       _id: '1',
@@ -125,7 +125,7 @@ const Properties = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+     
       <section className="bg-gradient-to-br from-primary-700 to-primary-900 text-white py-20 pt-32">
         <div className="container mx-auto px-4">
           <motion.div
@@ -144,7 +144,7 @@ const Properties = () => {
         </div>
       </section>
 
-      {/* Filters */}
+   
       <section className="bg-white shadow-md sticky top-20 z-40">
         <div className="container mx-auto px-4 py-6">
           <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-6 gap-4">
@@ -201,7 +201,7 @@ const Properties = () => {
         </div>
       </section>
 
-      {/* Listings */}
+     
       <section className="py-12">
         <div className="container mx-auto px-4">
           {loading ? (

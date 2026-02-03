@@ -107,7 +107,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       <div className="container mx-auto px-4 py-8">
-        {/* Welcome Section */}
+     
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ const Dashboard = () => {
           <p className="text-dark-600">Here's what's happening with your properties today.</p>
         </motion.div>
 
-        {/* Stats Grid */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
             <motion.div
@@ -146,7 +146,7 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* Quick Actions */}
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -173,7 +173,7 @@ const Dashboard = () => {
           </div>
         </motion.div>
 
-        {/* Recent Activity */}
+       
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

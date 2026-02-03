@@ -27,7 +27,6 @@ app.use(
         return callback(null, true);
       }
 
-      // Allow any vercel.app subdomain for frontend
       if (origin.includes('vercel.app')) {
         return callback(null, true);
       }
@@ -43,7 +42,7 @@ app.use(
 
 app.use(express.json());
 
-// Request logging middleware
+
 app.use((req, res, next) => {
   console.log(`📝 ${req.method} ${req.url}`);
   console.log("Headers:", JSON.stringify(req.headers, null, 2));

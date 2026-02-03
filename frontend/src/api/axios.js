@@ -32,7 +32,7 @@ api.interceptors.response.use(
       localStorage.removeItem("user");
       window.location.href = "/login";
     }
-    // Attach full error details to the error object
+    
     if (error.response?.data) {
       error.detailedMessage = error.response.data;
     }

@@ -66,11 +66,11 @@ exports.addProperty = async (req, res) => {
 
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
-        // For multer-storage-cloudinary, the file has a path property with the Cloudinary URL
+
         if (file.path) {
           imageUrls.push(file.path);
         } 
-        // For memory storage, we need to upload the buffer to Cloudinary
+
         else if (file.buffer) {
           try {
             const result = await new Promise((resolve, reject) => {
@@ -86,7 +86,6 @@ exports.addProperty = async (req, res) => {
             imageUrls.push(result.secure_url);
           } catch (uploadError) {
             console.error("Error uploading image to Cloudinary:", uploadError);
-            // Continue without this image rather than failing the whole request
           }
         }
       }
@@ -173,7 +172,7 @@ exports.updateProperty = async (req, res) => {
       imagesToDelete
     } = req.body;
 
-    // Sanitize text fields to handle newlines and special characters
+
     const sanitizedDescription = sanitizeText(description);
     const sanitizedTitle = sanitizeText(title);
     const sanitizedLocation = sanitizeText(location);
@@ -181,7 +180,7 @@ exports.updateProperty = async (req, res) => {
 
     let imageUrls = [];
 
-    // Handle existing images that were not deleted
+
     if (existingImages) {
       try {
         const parsedExisting = JSON.parse(existingImages);
@@ -193,7 +192,7 @@ exports.updateProperty = async (req, res) => {
       }
     }
 
-    // Add new uploaded images
+
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
         if (file.path) {
@@ -202,7 +201,7 @@ exports.updateProperty = async (req, res) => {
       }
     }
 
-    // Handle features
+
     let featuresArray = [];
     if (features) {
       if (typeof features === 'string') {

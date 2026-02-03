@@ -69,7 +69,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+      
       <section className="bg-gradient-to-br from-primary-700 to-primary-900 text-white py-20 pt-32">
         <div className="container mx-auto px-4">
           <motion.div
@@ -86,7 +86,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Info Cards */}
+  
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -110,11 +110,11 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Form & Map */}
+      
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Form */}
+           
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -139,7 +139,7 @@ const Contact = () => {
               </form>
             </motion.div>
 
-            {/* Map */}
+         
             <div className="rounded-xl overflow-hidden">
               <iframe
                 title="India Office Location"
@@ -154,7 +154,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Office Hours */}
+      
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-white rounded-xl p-8 shadow-md text-center">

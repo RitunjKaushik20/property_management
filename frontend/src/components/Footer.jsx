@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-dark-900 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
+         
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
@@ -20,7 +20,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+         
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -47,7 +47,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Categories */}
+        
           <div>
             <h3 className="text-lg font-semibold mb-4">Property Types</h3>
             <ul className="space-y-2 text-dark-400">
@@ -58,7 +58,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          
           <div>
             <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
             <ul className="space-y-3 text-dark-400">
@@ -85,7 +85,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+     
         <div className="border-t border-dark-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-dark-400 text-sm">
             © {currentYear} PropelBoard. All rights reserved.
